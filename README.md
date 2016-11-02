@@ -1,5 +1,5 @@
 # eBird Histogram Reader CLI (ebird-histogramr-cli)
-####v0.1.0
+####v0.1.1
 
 A CLI tool for parsing eBird ["BarChart" histogram files](http://help.ebird.org/customer/portal/articles/1010553-understanding-the-ebird-bar-charts).
 

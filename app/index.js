@@ -26,6 +26,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var userArgs = process.argv.slice(2);
 var hotspotUrl = userArgs[0];
 
+if (!hotspotUrl) {
+    console.log('No hotspot url provided.');
+    process.exit(1);
+}
+
 _bluebird2.default.try(function () {
 
     return _bhttp2.default.get(hotspotUrl);
@@ -33,7 +38,7 @@ _bluebird2.default.try(function () {
 
     var hotspot = _url2.default.parse(hotspotUrl, true);
     var histogram = (0, _ebirdHistogramr2.default)(response.body.toString());
-    var path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram.csv';
+    var path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram-' + hotspot.query.bYear + '-' + hotspot.query.eYear + '.csv';
 
     _fs2.default.writeFile(path, histogram.emit().csv, function (err) {
 

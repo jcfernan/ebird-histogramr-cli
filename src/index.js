@@ -9,6 +9,11 @@ import url from 'url';
 const userArgs = process.argv.slice(2);
 const hotspotUrl = userArgs[0];
 
+if (!hotspotUrl) {
+    console.log('No hotspot url provided.');
+    process.exit(1);
+}
+
 Promise.try(() => {
 
     return bhttp.get(hotspotUrl);
@@ -17,7 +22,8 @@ Promise.try(() => {
 
     const hotspot = url.parse(hotspotUrl, true);
     const histogram = histogramr(response.body.toString());
-    const path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram.csv';
+    const path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram-' +
+        hotspot.query.bYear + '-' + hotspot.query.eYear + '.csv';
 
     fs.writeFile(path, histogram.emit().csv, (err) => {
 
