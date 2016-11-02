@@ -1,5 +1,5 @@
 # eBird Histogram Reader CLI (ebird-histogramr-cli)
-####v0.1.1
+####v0.2.0
 
 A CLI tool for parsing eBird ["BarChart" histogram files](http://help.ebird.org/customer/portal/articles/1010553-understanding-the-ebird-bar-charts).
 
@@ -31,7 +31,7 @@ So, for example...
 histogramr-csv "http://ebird.org/ebird/BarChart?cmd=getChart&displayType=download&getLocations=hotspots&hotspots=L2093687&bYear=1900&eYear=2016&bMonth=1&eMonth=12&reportType=location&"
 ```
 
-This will create a `*-histogram.csv` file, where `*` is the hotspot location ID. Histograms do not contain the human-readable Hotspot name, unfortunately, so this is the format for now.
+This will create a `*-histogram-$.csv` file, where `*` is the hotspot location ID and `$` are the years selected. Histograms do not contain the human-readable Hotspot name, unfortunately, so this is the format for now.
 
 ##License
 
