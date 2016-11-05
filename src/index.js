@@ -25,7 +25,7 @@ Promise.try(() => {
     const path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram-' +
         hotspot.query.bYear + '-' + hotspot.query.eYear + '.csv';
 
-    fs.writeFile(path, histogram.emit().csv, (err) => {
+    fs.writeFile(path, histogram.emit().allCsv, (err) => {
 
         if (err) return console.log(err);
 

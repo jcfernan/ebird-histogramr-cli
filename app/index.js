@@ -40,7 +40,7 @@ _bluebird2.default.try(function () {
     var histogram = (0, _ebirdHistogramr2.default)(response.body.toString());
     var path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram-' + hotspot.query.bYear + '-' + hotspot.query.eYear + '.csv';
 
-    _fs2.default.writeFile(path, histogram.emit().csv, function (err) {
+    _fs2.default.writeFile(path, histogram.emit().allCsv, function (err) {
 
         if (err) return console.log(err);
 

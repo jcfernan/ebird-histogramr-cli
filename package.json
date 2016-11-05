@@ -1,7 +1,7 @@
 {
   "name": "ebird-histogramr-cli",
   "preferGlobal": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Robert Gerald Porter <rob@inpictures.ca>",
   "description": "CLI Tools for eBird Hotspot Histograms",
   "main": "./app/index.js",
@@ -55,6 +55,6 @@
   "dependencies": {
     "bhttp": "^1.2.4",
     "bluebird": "^3.4.6",
-    "ebird-histogramr": "^0.2.0"
+    "ebird-histogramr": "^0.3.1"
   }
 }
