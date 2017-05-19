@@ -9,21 +9,23 @@ import url from 'url';
 const userArgs = process.argv.slice(2);
 const hotspotUrl = userArgs[0];
 
-if (!hotspotUrl) {
+if ( ! hotspotUrl ) {
     console.log('No hotspot url provided.');
     process.exit(1);
 }
 
 Promise.try(() => {
 
-    return bhttp.get(hotspotUrl);
+    const session = bhttp.session({ headers: {"user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3100.0 Safari/537.36"} });
+
+    return session.get(hotspotUrl);
 })
 .then((response) => {
 
     const hotspot = url.parse(hotspotUrl, true);
     const histogram = histogramr(response.body.toString());
-    const path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram-' +
-        hotspot.query.bYear + '-' + hotspot.query.eYear + '.csv';
+    const path = process.cwd() + '/' + hotspot.query.r + '-histogram-' +
+        hotspot.query.byr + '-' + hotspot.query.eyr + '.csv';
 
     fs.writeFile(path, histogram.emit().allCsv, (err) => {
 

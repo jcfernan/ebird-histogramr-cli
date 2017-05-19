@@ -33,12 +33,14 @@ if (!hotspotUrl) {
 
 _bluebird2.default.try(function () {
 
-    return _bhttp2.default.get(hotspotUrl);
+    var session = _bhttp2.default.session({ headers: { "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3100.0 Safari/537.36" } });
+
+    return session.get(hotspotUrl);
 }).then(function (response) {
 
     var hotspot = _url2.default.parse(hotspotUrl, true);
     var histogram = (0, _ebirdHistogramr2.default)(response.body.toString());
-    var path = process.cwd() + '/' + hotspot.query.hotspots + '-histogram-' + hotspot.query.bYear + '-' + hotspot.query.eYear + '.csv';
+    var path = process.cwd() + '/' + hotspot.query.r + '-histogram-' + hotspot.query.byr + '-' + hotspot.query.eyr + '.csv';
 
     _fs2.default.writeFile(path, histogram.emit().allCsv, function (err) {
 
